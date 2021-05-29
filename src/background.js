@@ -23,7 +23,7 @@
   /** handler: rearrange new create tab  */
   browser.tabs.onCreated.addListener(tab => {
     const activeTab = activeTabs.get(tab.windowId);
-    return Promise.resolve(tab.openerTabId ?? activeTab.tabId)
+    return Promise.resolve(tab.openerTabId || activeTab.tabId)
       .then(leftId =>
         browser.tabs
           .get(leftId)

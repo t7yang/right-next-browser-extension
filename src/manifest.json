@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Right Next",
   "description": "Browser extension make new tab open right next to current tab.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "t7yang",
   "homepage_url": "https://github.com/t7yang/right-next-browser-extension",
   "applications": {
