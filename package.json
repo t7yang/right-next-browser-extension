@@ -1,6 +1,6 @@
 {
   "name": "right-next-browser-extension",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "main": "index.js",
   "repository": "git@github.com:t7yang/right-next-browser-extension.git",
   "author": "t7yang <t7yang@gmail.com>",
