@@ -36,7 +36,7 @@
           tab.pinned // if left tab is a pinned tab, need to find the currect insert position
             ? browser.windows
                 .get(tab.windowId, { populate: true })
-                .then(win => win.tabs.findIndex((_, idx, arr) => !arr[idx + 1]?.pinned) + 1)
+                .then(win => win.tabs.findIndex((_, idx, arr) => !arr[idx + 1] && arr[idx + 1].pinned) + 1)
             : tab.index + 1,
         )
         .then(index => browser.tabs.move(tab.id, { index }))
