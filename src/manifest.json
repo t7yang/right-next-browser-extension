@@ -8,13 +8,14 @@
   "applications": {
     "gecko": {
       "id": "right_next@t7yang",
-      "strict_min_version": "54.0"
+      "strict_min_version": "55.0"
     }
   },
   "icons": {
     "48": "logo.svg",
     "96": "logo.svg"
   },
+  "optional_permissions": ["tabs"],
   "background": {
     "scripts": ["background.js"]
   }

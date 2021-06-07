@@ -24,13 +24,15 @@
   browser.tabs.onCreated.addListener(tab => {
     const activeTab = activeTabs.get(tab.windowId);
     tab.index > 1 && // ignore 0 and 1, 0: the only tab in window; 1: new tab beside 1st tab
-      Promise.resolve(tab.openerTabId || activeTab.tabId)
-        .then(leftId =>
-          browser.tabs
-            .get(leftId)
+      Promise.all([tab.openerTabId || activeTab.tabId, browser.permissions.contains({ permissions: ['tabs'] })])
+        .then(([leftId, hasTabsPermit]) =>
+          browser.tabs.get(leftId).then(tab =>
             // container will immediately kill the new tab and create a new container tab
-            // if the left tab's status is loading, drop and get previous active tab
-            .then(tab => (tab.status === 'loading' ? browser.tabs.get(activeTab.previousTabId) : tab)),
+            // if all conditions true, use previous tab instead
+            hasTabsPermit && tab.status === 'loading' && tab.url === 'about:blank'
+              ? browser.tabs.get(activeTab.previousTabId)
+              : tab,
+          ),
         )
         .then(tab =>
           tab.pinned // if left tab is a pinned tab, need to find the currect insert position
