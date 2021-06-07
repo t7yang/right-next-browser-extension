@@ -11,13 +11,15 @@ Right Next can handle these situations:
 - Open new tab in foreground/left click.
 - Open new tab in background/middle click.
 - Open new tab from pinned tab.
-- Open new tab from/to [container](https://support.mozilla.org/en-US/kb/containers).
+- Open new tab from/to [container](https://support.mozilla.org/en-US/kb/containers) (`tabs` permission required since 2.0.0).
 
 Right Next also done with very less code which make it has good performance.
 
 ## Permission Required
 
-NO.
+`optional_permissions`:
+
+- `tabs`: please give this permission in order to work with container tabs (since 2.0.0).
 
 ## End Support
 
