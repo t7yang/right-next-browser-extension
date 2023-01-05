@@ -5,7 +5,7 @@
   "version": "2.0.1",
   "author": "t7yang",
   "homepage_url": "https://github.com/t7yang/right-next-browser-extension",
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "id": "right_next@t7yang",
       "strict_min_version": "55.0"
