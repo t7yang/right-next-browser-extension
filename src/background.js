@@ -23,8 +23,10 @@
   /** handler: rearrange new create tab  */
   browser.tabs.onCreated.addListener(tab => {
     const activeTab = activeTabs.get(tab.windowId);
-    tab.index > 1 && // ignore 0 and 1, 0: the only tab in window; 1: new tab beside 1st tab
-      Promise.all([tab.openerTabId || activeTab.tabId, browser.permissions.contains({ permissions: ['tabs'] })])
+
+    tab.openerTabId != null &&
+      tab.index > 1 && // ignore 0 and 1, 0: the only tab in window; 1: new tab beside 1st tab
+      Promise.all([tab.openerTabId, browser.permissions.contains({ permissions: ['tabs'] })])
         .then(([leftId, hasTabsPermit]) =>
           browser.tabs.get(leftId).then(tab =>
             // container will immediately kill the new tab and create a new container tab
